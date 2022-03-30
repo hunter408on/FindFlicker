@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/PhotosFragment">
+
+    <fragment
+        android:id="@+id/PhotosFragment"
+        android:name="com.cvs.find_flicker.ui.fragment.photos.PhotosFragment"
+        android:label="@string/photos_fragment_label"
+        tools:layout="@layout/fragment_photos">
+        <action
+            android:id="@+id/action_PhotoList_to_PhotoDetails"
+            app:destination="@id/PhotoDetailFragment">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/PhotoDetailFragment"
+        android:name="com.cvs.find_flicker.ui.fragment.photo_detail.PhotoDetailFragment"
+        android:label="@string/photo_detail_fragment_label"
+        tools:layout="@layout/fragment_photo_detail">
+        <argument
+            android:name="photo"
+            app:argType="com.cvs.find_flicker.data.models.Photo"
+            />
+    </fragment>
+</navigation>

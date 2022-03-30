@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Find Flicker</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title">Title: %s</string>
+    <string name="description">Description: %s</string>
+    <string name="width">Width: %s</string>
+    <string name="height">Height: %s</string>
+    <string name="author">Author: %s</string>
+    <string name="no_query_hint">You have no recent searches. Enter a search term above.</string>
+    <string name="recent_searches">Recent Searches</string>
+
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="photos_fragment_label">Photos</string>
+    <string name="photo_detail_fragment_label">Photo Detail</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
