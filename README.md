@@ -2,7 +2,7 @@
 
 ## Architecture
 
-**MVVM** architecture using decoupling techniques.
+**MVVM** architecture with SOLID principle.
 
 ## Used libraries
 
