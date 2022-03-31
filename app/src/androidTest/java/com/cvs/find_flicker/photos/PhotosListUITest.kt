@@ -8,9 +8,8 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.cvs.find_flicker.photo_detail.PhotoDetailViewIds
 import com.cvs.find_flicker.ui.MainActivity
-import com.cvs.find_flicker.utils.checkExistence
-import com.cvs.find_flicker.utils.click
-import com.cvs.find_flicker.utils.getRecyclerViewItem
+import com.cvs.find_flicker.utils.*
+import com.cvs.find_flicker.utils.NavigationHelper.openPhotoDetail
 import org.junit.After
 
 import org.junit.Test
@@ -25,7 +24,7 @@ import org.junit.Rule
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4ClassRunner::class)
-class PhotosListTest {
+class PhotosListUITest {
 
     @get:Rule
     var mActivityTestRule: ActivityScenarioRule<MainActivity> = ActivityScenarioRule(MainActivity::class.java)
@@ -52,14 +51,13 @@ class PhotosListTest {
 
     @Test
     fun checkPhotoDisplayed() {
-        Thread.sleep(3000)
+        UITestUtils.waitForViewDisappear(PhotosListViewIds.ProgressBar.id)
         getRecyclerViewItem(PhotosListViewIds.PhotosRecyclerView.id, 0, PhotosListViewIds.ItemTitle.id).checkExistence()
     }
 
     @Test
     fun navigateToDetail() {
-//        Thread.sleep(3000)
-//        getRecyclerViewItem(PhotosListViewIds.PhotosRecyclerView.id, 0, PhotosListViewIds.ItemTitle.id).click()
-//        Espresso.onView((withId(PhotoDetailViewIds.Author.id))).checkExistence()
+        openPhotoDetail()
+        Espresso.onView((withId(PhotoDetailViewIds.Author.id))).checkExistence()
     }
 }

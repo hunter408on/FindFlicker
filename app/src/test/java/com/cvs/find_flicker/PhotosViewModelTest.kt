@@ -1,15 +1,22 @@
 package com.cvs.find_flicker
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.cvs.find_flicker.data.Resource
+import com.cvs.find_flicker.data.models.PhotoList
 import com.cvs.find_flicker.data.repository.PhotosRepository
+import com.cvs.find_flicker.utils.UTUtils
+import com.cvs.find_flicker.utils.UTUtils.anyListString
+import com.cvs.find_flicker.utils.UTUtils.anyOtherString
+import com.cvs.find_flicker.utils.UTUtils.anyString
+import com.cvs.find_flicker.utils.UTUtils.getAnyPhotoList
 import com.cvs.find_flicker.viewmodel.PhotosViewModel
+import com.google.gson.Gson
 import com.util.InstantExecutorExtension
 import com.util.MainCoroutineRule
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -33,27 +40,75 @@ class PhotosViewModelTest {
 
     @Before
     fun setUp() {
+        coEvery { repository.fetchRecentQuery() } returns flow {
+            emit(anyListString())
+        }
+        coEvery { repository.requestPhotos("") } returns flow {
+            emit(Resource.success(getAnyPhotoList()))
+        }
+        coEvery { repository.requestPhotos(anyString()) } returns flow {
+            emit(Resource.success(getAnyPhotoList()))
+        }
+        coEvery { repository.requestPhotos(anyOtherString()) } returns flow {
+            emit(Resource.success(getAnyPhotoList()))
+        }
         sut = PhotosViewModel(repository)
     }
 
-    @Test
-    fun `call fetch recentQuery upon init`() {
-        coVerify { repository.fetchRecentQuery() }
+    @After
+    fun endTesting() {
+
     }
 
     @Test
-    fun `call requestPhoto recentQuery with empty upon init`() {
-        coVerify { repository.requestPhotos("") }
+    fun `test fetchRecentQuery upon init`() {
+        coVerify(atMost = 1) { repository.fetchRecentQuery() }
     }
 
     @Test
-    fun `fetch recentQuery upon init`() {
-        val queryList = listOf("1", "2", "3")
-        coEvery { repository.fetchRecentQuery() } returns flow {
-            emit(queryList)
-        }
-        sut.getQueryList()
+    fun `test requestPhotos with empty upon init`() {
+        coVerify(atMost = 1) { repository.requestPhotos("") }
+    }
+
+    @Test
+    fun `test fetchRecentQuery result upon init`() {
         sut.queriesLiveData.observeForever { }
-        assertEquals(queryList, sut.queriesLiveData.value)
+        assertEquals(anyListString(), sut.queriesLiveData.value)
+    }
+
+    @Test
+    fun `test requestPhotos result upon init`() {
+        sut.photosLiveData.observeForever { }
+        assertEquals(getAnyPhotoList(), sut.photosLiveData.value?.data)
+    }
+
+    @Test
+    fun `test NO requestPhotos upon empty query after init`() {
+        sut.tryFetchWith("")
+        coVerify(atMost = 1) { repository.requestPhotos("") }
+    }
+
+    @Test
+    fun `test requestPhotos TWICE upon non-empty query after init`() {
+        sut.tryFetchWith(anyString())
+        coVerify(atMost = 1) { repository.requestPhotos("") }
+        coVerify(atMost = 1) { repository.requestPhotos(anyString()) }
+    }
+
+    @Test
+    fun `test no side effect for requestPhotos upon repeated non-empty queries after init`() {
+        sut.tryFetchWith(anyString())
+        sut.tryFetchWith(anyString())
+        coVerify(atMost = 1) { repository.requestPhotos("") }
+        coVerify(atMost = 1) { repository.requestPhotos(anyString()) }
+    }
+
+    @Test
+    fun `test no side effect for requestPhotos upon different non-empty queries after init`() {
+        sut.tryFetchWith(anyString())
+        sut.tryFetchWith(anyOtherString())
+        coVerify(atMost = 1) { repository.requestPhotos("") }
+        coVerify(atMost = 1) { repository.requestPhotos(anyString()) }
+        coVerify(atMost = 1) { repository.requestPhotos(anyOtherString()) }
     }
 }
