@@ -45,10 +45,11 @@ class PhotosFragment : BaseFragment() {
         binding.recentQueryList.adapter = queryAdapter
         binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.tryFetchWith(newText ?: "")
+
                 return false
             }
             override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.tryFetchWith(query ?: "")
                 hideRecentQueryList()
                 return false
             }

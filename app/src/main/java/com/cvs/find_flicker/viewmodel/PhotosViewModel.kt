@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.cvs.find_flicker.data.Resource
 import com.cvs.find_flicker.data.models.PhotoList
 import com.cvs.find_flicker.data.repository.PhotosRepository
-import com.cvs.find_flicker.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
