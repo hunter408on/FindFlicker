@@ -1,7 +1,6 @@
 package com.cvs.find_flicker.ui.fragment.photos
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,8 @@ import com.cvs.find_flicker.data.models.PhotoList
 import com.cvs.find_flicker.databinding.FragmentPhotosBinding
 import com.cvs.find_flicker.ui.fragment.BaseFragment
 import com.cvs.find_flicker.ui.fragment.photos.adapter.QueryAdapter
-import com.cvs.find_flicker.viewmodel.PhotosViewModel
 import com.cvs.find_flicker.utils.observe
+import com.cvs.find_flicker.viewmodel.PhotosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

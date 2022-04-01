@@ -1,14 +1,13 @@
 package com.cvs.find_flicker.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import com.cvs.find_flicker.R
 import com.cvs.find_flicker.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint

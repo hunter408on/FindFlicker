@@ -1,10 +1,9 @@
 package com.cvs.find_flicker.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
-import com.cvs.find_flicker.ui.MainActivity
+import androidx.fragment.app.Fragment
 
 
 abstract class BaseFragment : Fragment() {

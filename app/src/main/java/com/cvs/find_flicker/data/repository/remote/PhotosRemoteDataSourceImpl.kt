@@ -1,14 +1,11 @@
 package com.cvs.find_flicker.data.repository.remote
 
 import com.cvs.find_flicker.data.Resource
-import com.cvs.find_flicker.data.error.NETWORK_ERROR
-import com.cvs.find_flicker.data.error.NO_INTERNET_CONNECTION
-import com.cvs.find_flicker.data.error.UNKNOWN
+import com.cvs.find_flicker.data.models.NETWORK_ERROR
+import com.cvs.find_flicker.data.models.NO_INTERNET_CONNECTION
 import com.cvs.find_flicker.data.models.PhotoList
 import com.cvs.find_flicker.utils.NetworkConnectivity
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
-import java.io.IOException
 import javax.inject.Inject
 
 class PhotosRemoteDataSourceImpl @Inject constructor(

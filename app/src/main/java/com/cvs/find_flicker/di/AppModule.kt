@@ -3,8 +3,6 @@ package com.cvs.find_flicker.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.cvs.find_flicker.data.models.PREF_NAME
-import com.cvs.find_flicker.utils.Network
-import com.cvs.find_flicker.utils.NetworkConnectivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

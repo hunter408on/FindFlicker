@@ -8,7 +8,6 @@ import com.cvs.find_flicker.data.repository.remote.PhotosRemoteDataSource
 import com.cvs.find_flicker.data.repository.remote.PhotosRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

@@ -3,7 +3,9 @@ package com.cvs.find_flicker.ui.fragment.photos.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.cvs.find_flicker.databinding.*
+import com.cvs.find_flicker.databinding.ItemNoQueryBinding
+import com.cvs.find_flicker.databinding.ItemQueryHeaderBinding
+import com.cvs.find_flicker.databinding.ItemSearchQueryBinding
 
 class QueryAdapter(private val onItemSelected: (query: String) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {

@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.cvs.find_flicker.R
-import com.cvs.find_flicker.data.Resource
 import com.cvs.find_flicker.data.models.KEY_PHOTO
 import com.cvs.find_flicker.data.models.Photo
-import com.cvs.find_flicker.data.models.PhotoList
 import com.cvs.find_flicker.databinding.FragmentPhotoDetailBinding
 import com.cvs.find_flicker.ui.fragment.BaseFragment
-import com.cvs.find_flicker.viewmodel.PhotosViewModel
-import com.cvs.find_flicker.utils.observe
 import com.cvs.find_flicker.viewmodel.PhotoDetailViewModel
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
